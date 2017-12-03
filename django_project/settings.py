@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import logging
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,13 +26,14 @@ SECRET_KEY = '13p5$sz7_4g-a2^e$5=e&hxz$b=c6dr-beml*ubcwpc(u5ixe%'
 # Application definition
 
 INSTALLED_APPS = [
-    # apps
+    # project apps
 
-    # vendor
+    # vendor apps (project specific)
+
+    # vendor apps
     # 'corsheaders',
     # 'easy_thumbnails',
     # 'fancybox',
-    'groupadmin_users',
     # 'import_export',
     'loginas',
     # 'oauth2_provider',
@@ -44,6 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # vendor apps that depend on django apps
+    'groupadmin_users',
 ]
 
 MIDDLEWARE = [
@@ -256,4 +261,6 @@ if os.path.exists(extra_settings_path):
     except Exception as e:
         raise Exception(
             "Failed to import extra settings from %s" % extra_settings_path
-        ) from exc
+         )
+# FIXME: python3 only
+#        ) from exc

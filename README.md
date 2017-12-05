@@ -1,7 +1,22 @@
 # Django project
 
+Install base dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+## Local development
 In the project folder "django_project" copy settings-devel-example.py to
 settings-devel.py and customise as needed
+
+## Production
+
+Generate secret key to use in production
+
+```
+python manage.py generatesecretkey
+```
 
 
 ## Project specific configuration

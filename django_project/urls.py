@@ -15,8 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.http import HttpResponse, HttpResponseForbidden
+
+
+def is_authenticated(request):
+    if request.user.is_authenticated:
+        return HttpResponse('OK')
+    else:
+        return HttpResponseForbidden()
+
 
 urlpatterns = [
+    # url(r'^is_authenticated?$', is_authenticated),
     url(r'^admin/', include('loginas.urls')),
     url(r'^admin/', admin.site.urls),
 ]

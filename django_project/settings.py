@@ -184,6 +184,14 @@ LOCALE_PATHS = [
 ]
 
 
+# corsheaders
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#     'www.example.com',
+# )
+# CORS_ALLOW_CREDENTIALS = True
+
+
 # easy-thumbnails
 # THUMBNAIL_BASEDIR = 'thumbs'
 # THUMBNAIL_ALIASES = {

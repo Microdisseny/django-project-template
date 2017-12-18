@@ -26,6 +26,14 @@ python manage.py generatesecretkey
 
 DEBUG = False
 
+
+## Common django commands
+
+```
+python manage.py makemessages -l {{ 2 letter language code}}
+python manage.py compilemessages
+```
+
 ## Common vendor apps
 
 django-cors-headers

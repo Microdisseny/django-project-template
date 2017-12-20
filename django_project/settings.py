@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import logging
+logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -238,7 +239,13 @@ LOCALE_PATHS = [
 
 
 # request-logging
-REQUEST_LOGGING_DATA_LOG_LEVEL = logging.INFO
+REQUEST_LOGGING_DATA_LOG_LEVEL = logging.DEBUG
+LOG_LEVEL = os.getenv('REQUEST_LOGGING_DATA_LOG_LEVEL')
+if LOG_LEVEL in ('DEBUG', 'INFO', 'WARN', 'ERROR'):
+    REQUEST_LOGGING_DATA_LOG_LEVEL = getattr(logging, LOG_LEVEL)
+else:
+    logger.error('REQUEST_LOGGING_DATA_LOG_LEVEL value not valid: %s'
+                 % LOG_LEVEL)
 REQUEST_LOGGING_ENABLE_COLORIZE = False
 
 LOGGING = {

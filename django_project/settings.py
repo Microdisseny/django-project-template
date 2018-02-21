@@ -139,9 +139,9 @@ DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
-ADMINS = (
-    ('Tech', 'tech@microdisseny.com'),
-)
+# e.g.: My name,admin@example.com,Other admin,admin2@example.com
+# ADMINS will be an empty array is it is not defined in the environment
+ADMINS = zip(*([iter(os.getenv('ADMINS', '').split(','))]*2))
 
 LANGUAGE_CODE = 'ca'
 LANGUAGE_CODE = os.getenv('LANGUAGE_CODE', LANGUAGE_CODE)

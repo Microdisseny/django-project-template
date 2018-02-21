@@ -184,6 +184,9 @@ LOCALE_PATHS = [
     os.path.join(APP_ROOT, 'locale'),
 ]
 
+EMAIL_SUBJECT_PREFIX = '[%s] ' % APP_NAME
+# From address for error messages
+SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 
 # corsheaders
 # CORS_ORIGIN_ALLOW_ALL = True

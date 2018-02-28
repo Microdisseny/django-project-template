@@ -40,7 +40,8 @@ urlpatterns = [
     # all urls:
     # url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     # auth urls only
-    # url(r'^o/', include(oauth2_endpoint_views, namespace="oauth2_provider")),
+    # url(r'^o/', include((oauth2_endpoint_views, 'oauth2_provider'),
+    #                     namespace='oauth2_provider')),
 
     # url(r'^is_authenticated?$', is_authenticated),
     url(r'^admin/', include('loginas.urls')),

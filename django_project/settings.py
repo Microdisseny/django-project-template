@@ -239,11 +239,19 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 # rest-framework
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         # 'rest_framework.authentication.BasicAuthentication',
 #         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
 #         'rest_framework.authentication.SessionAuthentication',
 #     ),
 #     'DEFAULT_PERMISSION_CLASSES': [
+#         # Require a valid user
 #         'rest_framework.permissions.IsAuthenticated',
+#         # Warning: Staff (admin) user required:
+#         # 'rest_framework.permissions.IsAdminUser',
+#         # Warning: GET is not protected, open to authenticated users
+#         # 'rest_framework.permissions.DjangoModelPermissions',
+#         # default setting:
+#         'rest_framework.permissions.AllowAny',
 #     ],
 #     # 'DEFAULT_RENDERER_CLASSES': (
 #     #     'drf_ujson.renderers.UJSONRenderer',

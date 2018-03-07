@@ -218,6 +218,20 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 #                   'oauth2_provider.middleware.OAuth2TokenMiddleware')
 
 # OAUTH2_PROVIDER = {
+#     # Authentication server needs the introspection scope
+#     # 'SCOPES': {
+#     #     'read': 'Read scope',
+#     #     'write': 'Write scope',
+#     #     'introspection': 'Introspect token scope',
+#     # },
+# 
+#     # Resource server delegating auth to Authentication server
+#     # 'RESOURCE_SERVER_INTROSPECTION_URL': 'https://example.org/o/introspect/',
+#     # 'RESOURCE_SERVER_INTROSPECTION_URL':
+#     #     os.environ.get('RESOURCE_SERVER_INTROSPECTION_URL'),
+#     # 'RESOURCE_SERVER_AUTH_TOKEN': os.environ.get('RESOURCE_SERVER_AUTH_TOKEN'),
+#     # 'RESOURCE_SERVER_TOKEN_CACHING_SECONDS': 60 * 60 * 10,
+# 
 #     'ACCESS_TOKEN_EXPIRE_SECONDS': 60 * 60 * 24 * 365 * 10,
 # }
 

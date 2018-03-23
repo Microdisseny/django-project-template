@@ -189,7 +189,8 @@ EMAIL_SUBJECT_PREFIX = '[%s] ' % APP_NAME
 SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 
 # corsheaders
-# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = os.getenv('CORS_ORIGIN_ALLOW_ALL',
+#                                   'False').lower() == 'true'
 # CORS_ORIGIN_WHITELIST = (
 #     'www.example.com',
 # )

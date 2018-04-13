@@ -225,14 +225,14 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 #     #     'write': 'Write scope',
 #     #     'introspection': 'Introspect token scope',
 #     # },
-# 
+#
 #     # Resource server delegating auth to Authentication server
 #     # 'RESOURCE_SERVER_INTROSPECTION_URL': 'https://example.org/o/introspect/',
 #     # 'RESOURCE_SERVER_INTROSPECTION_URL':
 #     #     os.environ.get('RESOURCE_SERVER_INTROSPECTION_URL'),
 #     # 'RESOURCE_SERVER_AUTH_TOKEN': os.environ.get('RESOURCE_SERVER_AUTH_TOKEN'),
 #     # 'RESOURCE_SERVER_TOKEN_CACHING_SECONDS': 60 * 60 * 10,
-# 
+#
 #     'ACCESS_TOKEN_EXPIRE_SECONDS': 60 * 60 * 24 * 365 * 10,
 # }
 
@@ -268,6 +268,8 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 #     'PAGE_SIZE': 100
 # }
 
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # request-logging
 REQUEST_LOGGING_DATA_LOG_LEVEL = logging.DEBUG

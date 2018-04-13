@@ -12,3 +12,4 @@ django-request-logging==0.5.5
 # drf-ujson==1.2
 # easy-thumbnails==2.5
 # psycopg2==2.7.4 --no-binary psycopg2
+# django-sslify==0.2.7

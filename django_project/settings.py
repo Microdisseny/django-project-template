@@ -269,6 +269,7 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 # }
 
 SECURE_SSL_REDIRECT = True
+SSLIFY_DISABLE = os.getenv('DISABLE_SSL', 'True').lower() == 'true'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # request-logging

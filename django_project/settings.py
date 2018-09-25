@@ -160,7 +160,7 @@ ADMIN_SITE_HEADER = os.getenv('ADMIN_SITE_HEADER', 'Django administration')
 ADMIN_SITE_TITLE = os.getenv('ADMIN_SITE_TITLE', 'Django site admin')
 ADMIN_INDEX_TITLE = os.getenv('ADMIN_INDEX_TITLE', 'Site administration')
 
-APP_NAME = os.path.dirname(os.path.abspath(__file__))
+APP_NAME = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
 APP_NAME = os.getenv('APP_NAME', APP_NAME)
 
 APP_URL = '/apps/%s/' % APP_NAME

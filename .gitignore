@@ -3,4 +3,5 @@ __pycache__
 db.sqlite3
 test.db
 django_project/settings-devel.py
+django_project/settings-local.py
 .venv/

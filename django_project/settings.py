@@ -180,8 +180,12 @@ STATIC_URL = os.getenv('STATIC_URL', STATIC_URL)
 STATIC_ROOT = os.path.join(APP_ROOT, 'static')
 STATIC_ROOT = os.getenv('STATIC_ROOT', STATIC_ROOT)
 
-SESSION_COOKIE_NAME = 'sessionid_%s' % APP_URL.replace('/', '_')
-SESSION_COOKIE_PATH = '%s/' % APP_URL
+if APP_URL == '/' or APP_URL == '':
+    SESSION_COOKIE_NAME = 'sessionid_%s' % APP_NAME
+    SESSION_COOKIE_PATH = '/'
+else:
+    SESSION_COOKIE_NAME = 'sessionid_%s' % APP_URL.replace('/', '_')
+    SESSION_COOKIE_PATH = '%s' % '/'
 
 LOCALE_PATHS = [
     os.path.join(APP_ROOT, 'locale'),

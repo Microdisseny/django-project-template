@@ -9,5 +9,9 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 APP_URL = '/'
 STATIC_URL = '/static/'
 
-SESSION_COOKIE_NAME = 'sessionid_django'
-SESSION_COOKIE_PATH = '/'
+if APP_URL == '/' or APP_URL == '':
+    SESSION_COOKIE_NAME = 'sessionid_%s' % APP_NAME
+    SESSION_COOKIE_PATH = '/'
+else:
+    SESSION_COOKIE_NAME = 'sessionid_%s' % APP_URL.replace('/', '_')
+    SESSION_COOKIE_PATH = '%s' % '/'

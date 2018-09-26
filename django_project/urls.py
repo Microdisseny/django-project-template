@@ -1,30 +1,30 @@
 """django_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.11/topics/http/urls/
+    https://docs.djangoproject.com/en/2.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
 Class-based views
     1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
 from django.contrib import admin
 from django.http import HttpResponse, HttpResponseForbidden
+from django.urls import include, path
 # import oauth2_provider.views as oauth2_views
 
 # OAuth2 provider endpoints
 # uncomment for using some urls only
 # oauth2_endpoint_views = [
-#     url(r'^authorize/$', oauth2_views.AuthorizationView.as_view(),
+#     path('authorize/', oauth2_views.AuthorizationView.as_view(),
 #         name="authorize"),
-#     url(r'^token/$', oauth2_views.TokenView.as_view(), name="token"),
-#     url(r'^revoke-token/$', oauth2_views.RevokeTokenView.as_view(),
+#     path('token/', oauth2_views.TokenView.as_view(), name="token"),
+#     path('revoke-token/', oauth2_views.RevokeTokenView.as_view(),
 #         name="revoke-token"),
 # ]
 
@@ -45,6 +45,6 @@ urlpatterns = [
     #                     namespace='oauth2_provider')),
 
     # url(r'^is_authenticated?$', is_authenticated),
-    url(r'^admin/', include('loginas.urls')),
-    url(r'^admin/', admin.site.urls),
+    path('admin/', include('loginas.urls')),
+    path('admin/', admin.site.urls),
 ]

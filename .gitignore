@@ -5,3 +5,6 @@ test.db
 django_project/settings-devel.py
 django_project/settings-local.py
 .venv/
+.direnv/
+django_project/devel.env
+django_project/local.env

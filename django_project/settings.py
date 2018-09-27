@@ -269,13 +269,14 @@ SSLIFY_DISABLE = os.getenv('DISABLE_SSL', 'True').lower() == 'true'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # request-logging
-REQUEST_LOGGING_DATA_LOG_LEVEL = logging.DEBUG
 LOG_LEVEL = os.getenv('REQUEST_LOGGING_DATA_LOG_LEVEL')
-if LOG_LEVEL in ('DEBUG', 'INFO', 'WARN', 'ERROR'):
+if not LOG_LEVEL:
+    REQUEST_LOGGING_DATA_LOG_LEVEL = logging.DEBUG
+elif LOG_LEVEL in ('DEBUG', 'INFO', 'WARN', 'ERROR'):
     REQUEST_LOGGING_DATA_LOG_LEVEL = getattr(logging, LOG_LEVEL)
 else:
     logger.error('REQUEST_LOGGING_DATA_LOG_LEVEL value not valid: %s' % LOG_LEVEL)
-REQUEST_LOGGING_ENABLE_COLORIZE = False
+REQUEST_LOGGING_ENABLE_COLORIZE = os.getenv('REQUEST_LOGGING_ENABLE_COLORIZE', 'False').lower() == 'true'
 
 LOGGING = {
     'version': 1,

@@ -10,13 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
-import os
 import logging
+import os
+
 logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     # 'oauth2_provider',
     # 'rest_framework',
     'theme_microdisseny',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,7 +86,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -105,7 +103,6 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -125,7 +122,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -137,7 +133,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 # e.g.: My name,admin@example.com,Other admin,admin2@example.com
 # ADMINS will be an empty array is it is not defined in the environment
-ADMINS = zip(*([iter(os.getenv('ADMINS', '').split(','))]*2))
+ADMINS = zip(*([iter(os.getenv('ADMINS', '').split(','))] * 2))
 
 LANGUAGE_CODE = 'ca'
 LANGUAGE_CODE = os.getenv('LANGUAGE_CODE', LANGUAGE_CODE)
@@ -199,7 +195,6 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 # )
 # CORS_ALLOW_CREDENTIALS = True
 
-
 # easy-thumbnails
 # THUMBNAIL_BASEDIR = 'thumbs'
 # THUMBNAIL_ALIASES = {
@@ -207,7 +202,6 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 #         'changelist': {'size': (50, 50), 'crop': False},
 #     },
 # }
-
 
 # oauth-toolkit
 # AUTHENTICATION_BACKENDS = (
@@ -238,7 +232,6 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 #
 #     'ACCESS_TOKEN_EXPIRE_SECONDS': 60 * 60 * 24 * 365 * 10,
 # }
-
 
 # rest-framework
 # REST_FRAMEWORK = {
@@ -271,8 +264,7 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 #     'PAGE_SIZE': 100
 # }
 
-SECURE_SSL_REDIRECT = os.getenv(
-    'SECURE_SSL_REDIRECT', 'False').lower() == 'true'
+SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'False').lower() == 'true'
 SSLIFY_DISABLE = os.getenv('DISABLE_SSL', 'True').lower() == 'true'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -282,8 +274,7 @@ LOG_LEVEL = os.getenv('REQUEST_LOGGING_DATA_LOG_LEVEL')
 if LOG_LEVEL in ('DEBUG', 'INFO', 'WARN', 'ERROR'):
     REQUEST_LOGGING_DATA_LOG_LEVEL = getattr(logging, LOG_LEVEL)
 else:
-    logger.error('REQUEST_LOGGING_DATA_LOG_LEVEL value not valid: %s'
-                 % LOG_LEVEL)
+    logger.error('REQUEST_LOGGING_DATA_LOG_LEVEL value not valid: %s' % LOG_LEVEL)
 REQUEST_LOGGING_ENABLE_COLORIZE = False
 
 LOGGING = {
@@ -304,7 +295,6 @@ LOGGING = {
     },
 }
 
-
 # Overwrite settings using ENVIRONMENT_NAME
 ENVIRONMENT_NAME = os.environ.get('ENVIRONMENT_NAME', '')
 extra_settings_file = 'settings-%s.py' % ENVIRONMENT_NAME
@@ -312,13 +302,8 @@ extra_settings_dir = os.path.dirname(os.path.abspath(__file__))
 extra_settings_path = os.path.join(extra_settings_dir, extra_settings_file)
 if os.path.exists(extra_settings_path):
     try:
-        exec(compile(
-            open(
-                extra_settings_path, "rb"
-            ).read(), extra_settings_path, 'exec'), globals())
+        exec(compile(open(extra_settings_path, "rb").read(), extra_settings_path, 'exec'), globals())
     except Exception as e:
-        raise Exception(
-            "Failed to import extra settings from %s" % extra_settings_path
-         )
+        raise Exception("Failed to import extra settings from %s" % extra_settings_path)
 # FIXME: python3 only
 #        ) from exc

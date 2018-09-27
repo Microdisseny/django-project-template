@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.http import HttpResponse, HttpResponseForbidden
 from django.urls import include, path
+
 # import oauth2_provider.views as oauth2_views
 
 # OAuth2 provider endpoints

@@ -303,8 +303,7 @@ extra_settings_dir = os.path.dirname(os.path.abspath(__file__))
 extra_settings_path = os.path.join(extra_settings_dir, extra_settings_file)
 if os.path.exists(extra_settings_path):
     try:
-        exec(compile(open(extra_settings_path, "rb").read(), extra_settings_path, 'exec'), globals())
+        with open(extra_settings_path, "rb") as settings_file:
+            exec(compile(settings_file.read(), extra_settings_path, 'exec'), globals())
     except Exception as e:
         raise Exception("Failed to import extra settings from %s" % extra_settings_path)
-# FIXME: python3 only
-#        ) from exc

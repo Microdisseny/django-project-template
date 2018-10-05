@@ -1,5 +1,5 @@
 #!/bin/bash
-SCRIPTDIR=`dirname "$BASH_SOURCE"`
+SCRIPTDIR="$( cd "$(dirname "$BASH_SOURCE")" ; pwd -P )"
 MANAGE="$SCRIPTDIR/../manage.py"
 
 export ENVIRONMENT_NAME=test

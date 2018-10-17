@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import logging
 import os
 
+from django.utils.translation import gettext_lazy as _
+
 logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -148,9 +150,9 @@ USE_L10N = True
 USE_TZ = True
 
 SITE_URL = os.getenv('SITE_URL')
-ADMIN_SITE_HEADER = os.getenv('ADMIN_SITE_HEADER', 'Django administration')
-ADMIN_SITE_TITLE = os.getenv('ADMIN_SITE_TITLE', 'Django site admin')
-ADMIN_INDEX_TITLE = os.getenv('ADMIN_INDEX_TITLE', 'Site administration')
+ADMIN_SITE_HEADER = _(os.getenv('ADMIN_SITE_HEADER', 'Django administration'))
+ADMIN_SITE_TITLE = _(os.getenv('ADMIN_SITE_TITLE', 'Django site admin'))
+ADMIN_INDEX_TITLE = _(os.getenv('ADMIN_INDEX_TITLE', 'Site administration'))
 
 APP_NAME = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
 APP_NAME = os.getenv('APP_NAME', APP_NAME)

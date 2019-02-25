@@ -204,7 +204,7 @@ if APP_URL == '/' or APP_URL == '':
     SESSION_COOKIE_PATH = '/'
 else:
     SESSION_COOKIE_NAME = 'sessionid_%s' % APP_URL.replace('/', '_')
-    SESSION_COOKIE_PATH = '%s' % '/'
+    SESSION_COOKIE_PATH = '%s%s' % (APP_URL, '' if APP_URL[-1] == '/' else '/')
 
 LOCALE_PATHS = [
     os.path.join(APP_ROOT, 'locale'),

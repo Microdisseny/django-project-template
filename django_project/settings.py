@@ -211,8 +211,11 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 # corsheaders
 # CORS_ORIGIN_ALLOW_ALL = os.getenv('CORS_ORIGIN_ALLOW_ALL',
 #                                   'False').lower() == 'true'
-# CORS_ORIGIN_WHITELIST = (
-#     'www.example.com',
+# CORS_ORIGIN_WHITELIST = tuple(
+#     whitelisted
+#     for whitelisted
+#     in re.sub('\s', '', os.getenv('CORS_ORIGIN_WHITELIST', '')).split(',')
+#     if whitelisted
 # )
 # CORS_ALLOW_CREDENTIALS = True
 

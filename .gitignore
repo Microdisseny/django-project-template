@@ -8,3 +8,4 @@ django_project/settings-local.py
 .direnv/
 django_project/devel.env
 django_project/local.env
+/app.env

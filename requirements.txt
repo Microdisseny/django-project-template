@@ -13,3 +13,4 @@ django-request-logging==0.7.1
 # easy-thumbnails==2.7
 # psycopg2==2.8.5 --no-binary psycopg2
 # django-sslify==0.2.7
+# sentry==10.0.0

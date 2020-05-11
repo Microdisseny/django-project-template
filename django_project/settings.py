@@ -329,6 +329,60 @@ LOGGING = {
     },
 }
 
+RUNNING_PYTEST = 'pytest' in sys.modules
+
+# debug_toolbar
+DEBUG_TOOLBAR = os.environ.get('DEBUG_TOOLBAR', 'False').lower() == 'true'
+
+if DEBUG_TOOLBAR and not RUNNING_PYTEST:
+    print('ENABLING DJANGO DEBUG TOOLBAR')
+    print('> Remember to add your IP to INTERNAL_IPS')
+    ddt_request_history_enabled = False
+    try:
+        import ddt_request_history  # noqa
+        ddt_request_history_enabled = True
+    except Exception:
+        print('> Request history panel is not installed:')
+        print('  pip install django-debug-toolbar-request-history')
+    print('')
+
+    INSTALLED_APPS = list(INSTALLED_APPS)
+    INSTALLED_APPS.append('debug_toolbar')
+
+    MIDDLEWARE = list(MIDDLEWARE)
+    MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
+
+    DEBUG_TOOLBAR_PANELS = [
+        'debug_toolbar.panels.versions.VersionsPanel',
+        'debug_toolbar.panels.timer.TimerPanel',
+        'debug_toolbar.panels.settings.SettingsPanel',
+        'debug_toolbar.panels.headers.HeadersPanel',
+        'debug_toolbar.panels.request.RequestPanel',
+        'debug_toolbar.panels.sql.SQLPanel',
+        'debug_toolbar.panels.templates.TemplatesPanel',
+        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+        'debug_toolbar.panels.cache.CachePanel',
+        'debug_toolbar.panels.signals.SignalsPanel',
+        'debug_toolbar.panels.logging.LoggingPanel',
+        'debug_toolbar.panels.redirects.RedirectsPanel',
+        'debug_toolbar.panels.profiling.ProfilingPanel',
+    ]
+
+    if ddt_request_history_enabled:
+        DEBUG_TOOLBAR_PANELS.insert(
+            0,
+            'ddt_request_history.panels.request_history.RequestHistoryPanel'
+        )
+
+        DEBUG_TOOLBAR_CONFIG = {
+            # Number of requests to store, default is 10
+            # 'RESULTS_STORE_SIZE': 50,
+            # only required for debug_toolbar versions below 1.8
+            'SHOW_TOOLBAR_CALLBACK': (
+                'ddt_request_history.panels.request_history.allow_ajax'
+            )
+        }
+
 # Overwrite settings using ENVIRONMENT_NAME
 ENVIRONMENT_NAME = os.environ.get('ENVIRONMENT_NAME', '')
 extra_settings_file = 'settings-%s.py' % ENVIRONMENT_NAME

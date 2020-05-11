@@ -329,6 +329,18 @@ LOGGING = {
     },
 }
 
+# Sentry
+SENTRY_DSN = os.getenv('SENTRY_DSN', None)
+if SENTRY_DSN is not None:
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration()]
+    )
+
+# pytest
 RUNNING_PYTEST = 'pytest' in sys.modules
 
 # debug_toolbar

@@ -29,6 +29,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # Application definition
 
 INSTALLED_APPS = [
+    'theme_microdisseny',
+
     # project apps
     'django_project',
 
@@ -42,8 +44,6 @@ INSTALLED_APPS = [
     'loginas',
     # 'oauth2_provider',
     # 'rest_framework',
-    'theme_microdisseny',
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

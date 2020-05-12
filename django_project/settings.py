@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import logging
 import os
+import sys
 
 from django.utils.translation import gettext_lazy as _
 
@@ -404,5 +405,5 @@ if os.path.exists(extra_settings_path):
     try:
         with open(extra_settings_path, "rb") as settings_file:
             exec(compile(settings_file.read(), extra_settings_path, 'exec'), globals())
-    except Exception as e:
+    except Exception:
         raise Exception("Failed to import extra settings from %s" % extra_settings_path)

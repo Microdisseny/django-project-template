@@ -9,3 +9,5 @@ django_project/settings-local.py
 django_project/devel.env
 django_project/local.env
 /app.env
+/.coverage
+/htmlcov/

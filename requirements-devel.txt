@@ -17,4 +17,4 @@ pytest-env==0.6.2
 pytest-mock==3.0.0
 pytest-pythonpath==0.7.3
 pytest-sugar==0.9.2
-safety==1.8.7
+safety==1.9.0

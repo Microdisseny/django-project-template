@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.http import HttpResponse, HttpResponseForbidden
 from django.urls import include, path
+
+# from .views import is_authenticated
 
 # import oauth2_provider.views as oauth2_views
 
@@ -29,13 +30,6 @@ from django.urls import include, path
 #     path('revoke-token/', oauth2_views.RevokeTokenView.as_view(),
 #         name="revoke-token"),
 # ]
-
-
-def is_authenticated(request):
-    if request.user.is_authenticated:
-        return HttpResponse('OK')
-    else:
-        return HttpResponseForbidden()
 
 
 urlpatterns = [

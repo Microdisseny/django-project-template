@@ -309,7 +309,7 @@ if not LOG_LEVEL:
 elif LOG_LEVEL in ('DEBUG', 'INFO', 'WARN', 'ERROR'):
     REQUEST_LOGGING_DATA_LOG_LEVEL = getattr(logging, LOG_LEVEL)
 else:
-    logger.error('REQUEST_LOGGING_DATA_LOG_LEVEL value not valid: %s' % LOG_LEVEL)
+    logger.error(f'REQUEST_LOGGING_DATA_LOG_LEVEL value not valid: {LOG_LEVEL}')
 REQUEST_LOGGING_ENABLE_COLORIZE = os.getenv('REQUEST_LOGGING_ENABLE_COLORIZE', 'False').lower() == 'true'
 
 LOGGING = {
@@ -354,7 +354,7 @@ if DEBUG_TOOLBAR and not RUNNING_PYTEST:
     try:
         import ddt_request_history  # noqa
         ddt_request_history_enabled = True
-    except Exception:
+    except ModuleNotFoundError:
         print('> Request history panel is not installed:')
         print('  pip install django-debug-toolbar-request-history')
     print('')
@@ -405,5 +405,5 @@ if os.path.exists(extra_settings_path):
     try:
         with open(extra_settings_path, "rb") as settings_file:
             exec(compile(settings_file.read(), extra_settings_path, 'exec'), globals())
-    except Exception:
-        raise Exception("Failed to import extra settings from %s" % extra_settings_path)
+    except Exception as e:
+        raise Exception("Failed to import extra settings from %s" % extra_settings_path) from e

@@ -62,7 +62,7 @@ banner "Run bandit" "docker-compose exec django bandit -r . -x ./tests/"
 docker-compose exec django bandit -r . -x ./tests/
 
 banner "Run pylint" "docker-compose exec django pylint --rcfile=setup.cfg \$(git ls-files -- '*.py' ':!:*/migrations*') --load-plugins pylint_django --load-plugins pylint_django.checkers.migrations --load-plugins pylint_pytest"
-docker-compose exec django pylint --rcfile=setup.cfg $(git ls-files -- '*.py' ':!:*/migrations*') --load-plugins pylint_django --load-plugins pylint_django.checkers.migrations --load-plugins pylint_pytest
+docker-compose exec django pylint --rcfile=setup.cfg $(git ls-files -- '*.py' ':!:*/migrations*')
 
 banner "Run mypy" "docker-compose exec django mypy ."
 docker-compose exec django mypy .

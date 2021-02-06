@@ -1,5 +1,7 @@
+from factory import Faker, LazyAttribute
+from factory.django import DjangoModelFactory
+
 from django.contrib.auth import get_user_model
-from factory import DjangoModelFactory, Faker, LazyAttribute
 
 User = get_user_model()
 

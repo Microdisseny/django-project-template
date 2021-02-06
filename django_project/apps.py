@@ -1,5 +1,6 @@
-from django.contrib.admin.apps import AdminConfig
+from django.apps import AppConfig
 
 
-class CustomAdminConfig(AdminConfig):
-    default_site = 'django_project.admin.CustomAdminSite'
+class DjangoProjectConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'django_project'

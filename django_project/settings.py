@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'loginas',
     # 'oauth2_provider',
     # 'rest_framework',
+    'django_project.admin.CustomAdminConfig',  # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

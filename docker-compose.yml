@@ -42,6 +42,8 @@ services:
     command: ["/bin/bash", "/app/docker/scripts/wait-for-it.sh", "db:5432", "--", "/bin/bash", "/app/docker/django/runserver.sh"]
     volumes:
       - .:/app:cached
+    # ports:
+    #   - 8000:8000
     networks:
       default:
         aliases:

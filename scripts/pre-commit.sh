@@ -24,7 +24,7 @@ banner "Run diff-cover" "docker-compose exec django diff-cover coverage.xml --ht
 docker-compose exec django diff-cover coverage.xml --html-report report.html --fail-under 80
 
 banner "Run diff-quality" "docker-compose exec django diff-quality --violations=flake8 --fail-under 100"
-docker-compose exec django diff-quality --violations=flake8 --fail-under 100
+docker-compose exec django diff-quality --violations=flake8 --fail-under 100 --options='--config=setup.cfg'
 
 banner "Run diff-quality" "docker-compose exec django diff-quality --violations=pylint --fail-under 90 --options='--rcfile=setup.cfg'"
 docker-compose exec django diff-quality --violations=pylint --fail-under 90 --options='--rcfile=setup.cfg'

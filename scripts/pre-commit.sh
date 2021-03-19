@@ -23,12 +23,6 @@ docker-compose exec django pytest
 banner "Run diff-cover" "docker-compose exec django diff-cover coverage.xml --html-report report.html --fail-under 80"
 docker-compose exec django diff-cover coverage.xml --html-report report.html --fail-under 80
 
-banner "Run diff-quality" "docker-compose exec django diff-quality --violations=pycodestyle --fail-under 100"
-docker-compose exec django diff-quality --violations=pycodestyle --fail-under 100
-
-banner "Run diff-quality" "docker-compose exec django diff-quality --violations=pyflakes --fail-under 100"
-docker-compose exec django diff-quality --violations=pyflakes --fail-under 100
-
 banner "Run diff-quality" "docker-compose exec django diff-quality --violations=flake8 --fail-under 100"
 docker-compose exec django diff-quality --violations=flake8 --fail-under 100
 

@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'loginas',
     # 'oauth2_provider',
     # 'rest_framework',
-    'django_project.admin.CustomAdminConfig',  # 'django.contrib.admin',
+    # BUG: AdminConfig not in apps.py for Django 3.2: https://code.djangoproject.com/ticket/32692
+    'django_project.adminconfig.CustomAdminConfig',  # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

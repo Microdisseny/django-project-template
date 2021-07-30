@@ -1,0 +1,9 @@
+{% extends 'admin/base.html' %}
+
+{% load i18n %}
+{% block userlinks %}
+    {% if DOCUMENTATION_URL %}
+        <a href="{{ DOCUMENTATION_URL }}" target="_blank">{{ DOCUMENTATION_TITLE }}</a> /
+    {% endif %}
+    {{ block.super }}
+{% endblock %}

@@ -300,6 +300,7 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', '')
 #     #     'rest_framework.parsers.MultiPartParser'
 #     #     'drf_ujson.parsers.UJSONParser',
 #     # ),
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 #     'PAGE_SIZE': 100
 # }
 

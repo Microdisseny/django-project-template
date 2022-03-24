@@ -32,6 +32,9 @@ docker-compose exec django diff-quality --violations=pylint --fail-under 90 --op
 banner "Run makemigrations" "docker-compose exec django python3 manage.py makemigrations --check --dry-run"
 docker-compose exec django python3 manage.py makemigrations --check --dry-run
 
+banner "Run django check" "docker-compose exec django python3 manage.py check"
+docker-compose exec django python3 manage.py check
+
 banner "Run isort" "docker-compose exec django isort . --check --diff"
 docker-compose exec django isort . --check --diff
 

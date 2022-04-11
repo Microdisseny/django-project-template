@@ -7,27 +7,11 @@
 
 version: "3.7"
 services:
-  requirements:
-    container_name: xclientx_xprojectx_requirements
-    build:
-      context: .
-      dockerfile: docker/django/ubuntu-18.04/Dockerfile
-      args:
-        - EXTRA_REQUIREMENTS=devel
-    image: xclientx_xprojectx_requirements
-    entrypoint:
-      - /bin/bash
-    command: []
-
   db:
     container_name: xclientx_xprojectx_db
-    build:
-      context: docker/postgres/ubuntu-18.04/
-      dockerfile: Dockerfile
-    image: xclientx_xprojectx_db
+    image: postgres:14
     env_file:
      - app.env
-    command: ["/bin/bash", "/app/docker/postgres/postgresql10.sh"]
     volumes:
       - .:/app
       - dbdata:/var/lib/postgresql/
@@ -36,7 +20,12 @@ services:
     container_name: xclientx_xprojectx_django
     depends_on:
       - db
-    image: xclientx_xprojectx_requirements
+    build:
+      context: .
+      dockerfile: docker/django/ubuntu-20.04/Dockerfile
+      args:
+        - EXTRA_REQUIREMENTS=devel
+    image: xclientx_xprojectx_django
     env_file:
      - app.env
     command: ["/bin/bash", "/app/docker/scripts/wait-for-it.sh", "db:5432", "--", "/bin/bash", "/app/docker/django/runserver.sh"]

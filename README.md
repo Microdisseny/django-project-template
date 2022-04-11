@@ -1,9 +1,11 @@
-# Django project
+# Docker development
 
-Install base dependencies:
+Update docker submodule:
 
 ```
-pip install -r requirements.txt
+git submodule update --init --recursive
+
+docker-compose up
 ```
 
 ## Local development

@@ -39,15 +39,15 @@ urlpatterns = [
     # auth urls only
     # url(r'^o/', include((oauth2_endpoint_views, 'oauth2_provider'),
     #                     namespace='oauth2_provider')),
-
     # url(r'^is_authenticated?$', is_authenticated),
-    path('admin/', include('loginas.urls')),
-    path('admin/', admin.site.urls),
+    path("admin/", include("loginas.urls")),
+    path("admin/", admin.site.urls),
 ]
 
 
 if settings.DEBUG_TOOLBAR:
     import debug_toolbar
+
     urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
+        path("__debug__/", include(debug_toolbar.urls)),
     ] + urlpatterns

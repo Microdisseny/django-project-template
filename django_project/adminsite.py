@@ -14,8 +14,8 @@ class CustomAdminSite(admin.AdminSite):
 
     def each_context(self, request):
         context = super().each_context(request)
-        context['DOCUMENTATION_URL'] = settings.DOCUMENTATION_URL
-        context['DOCUMENTATION_TITLE'] = settings.DOCUMENTATION_TITLE
+        context["DOCUMENTATION_URL"] = settings.DOCUMENTATION_URL
+        context["DOCUMENTATION_TITLE"] = settings.DOCUMENTATION_TITLE
         return context
 
     # def get_urls(self):

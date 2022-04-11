@@ -10,5 +10,5 @@ class UserFactory(DjangoModelFactory):
     class Meta:
         model = User
 
-    username = Faker('email')
+    username = Faker("email")
     email = LazyAttribute(lambda u: u.username)

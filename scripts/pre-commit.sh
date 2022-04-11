@@ -38,6 +38,9 @@ docker-compose exec django python3 manage.py check
 banner "Run isort" "docker-compose exec django isort . --check --diff"
 docker-compose exec django isort . --check --diff
 
+banner "Run black" "docker-compose exec django black . --check"
+docker-compose exec django black . --check
+
 banner "Run autopep8" "docker-compose exec django autopep8 --exit-code --diff -r ."
 docker-compose exec django autopep8 --exit-code --diff -r .
 

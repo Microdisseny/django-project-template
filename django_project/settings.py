@@ -58,8 +58,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # request logging
-    # 'request_logging.middleware.LoggingMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     # cors headers
@@ -308,15 +306,6 @@ SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'False').lower() == 'true
 SSLIFY_DISABLE = os.getenv('DISABLE_SSL', 'True').lower() == 'true'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# request-logging
-LOG_LEVEL = os.getenv('REQUEST_LOGGING_DATA_LOG_LEVEL')
-if not LOG_LEVEL:
-    REQUEST_LOGGING_DATA_LOG_LEVEL = logging.DEBUG
-elif LOG_LEVEL in ('DEBUG', 'INFO', 'WARN', 'ERROR'):
-    REQUEST_LOGGING_DATA_LOG_LEVEL = getattr(logging, LOG_LEVEL)
-else:
-    logger.error(f'REQUEST_LOGGING_DATA_LOG_LEVEL value not valid: {LOG_LEVEL}')
-REQUEST_LOGGING_ENABLE_COLORIZE = os.getenv('REQUEST_LOGGING_ENABLE_COLORIZE', 'False').lower() == 'true'
 
 LOGGING = {
     'version': 1,

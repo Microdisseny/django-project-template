@@ -315,11 +315,11 @@ LOGGING = {
     },
     "loggers": {
         # django request
-        # 'django.request': {
-        #     'handlers': ['console'],
-        #     'level': 'INFO',  # change debug level as appropiate
-        #     'propagate': False,
-        # },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'INFO',  # change debug level as appropiate
+            'propagate': False,
+        },
     },
 }
 

@@ -219,6 +219,8 @@ DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "root@localhost")
 # From address for error messages
 SERVER_EMAIL = os.getenv("SERVER_EMAIL", "")
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 # corsheaders
 # CORS_ORIGIN_ALLOW_ALL = os.getenv('CORS_ORIGIN_ALLOW_ALL',
 #                                   'False').lower() == 'true'

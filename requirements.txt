@@ -1,4 +1,4 @@
-Django==3.2.13
+Django==3.2.18
 django-cors-headers==3.10.1
 # django-fancybox==0.1.5
 django-groupadmin-users==0.3.4
